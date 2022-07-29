@@ -54,12 +54,7 @@ class CustomService {
       'format'	=> 'php_serial',
     ];
 
-    $encoded_params = [];
-    foreach ($params as $k => $v){
-      $encoded_params[] = urlencode($k).'='.urlencode($v);
-    }
-
-    $rsp_obj = $this->callTheApi($encoded_params);
+    $rsp_obj = $this->callTheApi($params);
 
     //display gallery images (or an error if it failed)
     if ($rsp_obj['stat'] == 'ok') {
