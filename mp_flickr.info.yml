@@ -1,0 +1,6 @@
+name: Flickr  Module
+description: Provides flickr functionality on the site.
+package: MP
+
+type: module
+core_version_requirement: ^8 || ^9

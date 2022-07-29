@@ -1,0 +1,15 @@
+mp_flickr.flickr_gallery_form:
+  path: '/mp_flickr/flickrgalleryform'
+  defaults:
+    _form : '\Drupal\mp_flickr\Form\FlickrGalleryForm'
+    _title: 'Flickr Gallery Form'
+  requirements:
+    _permission: 'access content'
+
+mp_flickr.flickr_photo_form:
+  path: '/mp_flickr/flickrphotoform'
+  defaults:
+    _form : '\Drupal\mp_flickr\Form\FlickrPhotoForm'
+    _title: 'Flickr Photo Form'
+  requirements:
+    _permission: 'access content'
