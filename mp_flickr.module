@@ -1,1 +1,27 @@
 <?php
+
+/**
+ * @file
+ * Primary module hooks for mp_flickr module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function mp_flickr_theme($existing, $type, $theme, $path) {
+  return [
+    'photo_form' => [
+      'variables' => [
+        'photo_id' => NULL,
+        'photo' => NULL,
+      ],
+    ],
+    'gallery_form' => [
+      'variables' => [
+        'gallery_id' => NULL,
+        'gallery' => NULL,
+      ],
+    ],
+
+  ];
+}

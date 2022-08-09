@@ -1,0 +1,6 @@
+mp_flickr.admin_settings_form:
+  title: 'Api_key configuration'
+  route_name: mp_flickr.admin_settings_form
+  description: 'Api_key admin'
+  parent: system.admin_config_system
+  weight: 99

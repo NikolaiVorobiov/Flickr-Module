@@ -8,10 +8,10 @@ use Drupal\Core\Session\AccountInterface;
  * Class CustomService
  * @package Drupal\mp_flickr\Services
  */
-class CustomService {
+class CustomServices {
 
   /**
-   * Allows to display an image on the screen.
+   * Returns photo's uri.
    */
   public function getPhoto($api_key, $photo_id) {
 
@@ -33,16 +33,16 @@ class CustomService {
       $secret = $rsp_obj['photo']['secret'];
       $photo_title = $rsp_obj['photo']['title']['_content'];
 
-      echo "<div><img src=\"https://live.staticflickr.com/{$server}/{$id}_{$secret}_w.jpg\">Title is $photo_title!<div>";
+      $photo = "https://live.staticflickr.com/{$server}/{$id}_{$secret}_w.jpg";
+      return $photo;
 
     } else {
-      echo "Call failed!";
+      return "Call failed!";
     }
-    die;
   }
 
   /**
-   * Allows to display gallery on the screen.
+   * Return array with gallery photos uri.
    */
   public  function getGallery($api_key, $gallery_id) {
 
@@ -59,6 +59,7 @@ class CustomService {
     //display gallery images (or an error if it failed)
     if ($rsp_obj['stat'] == 'ok') {
 
+      $gallery =[];
       foreach ($rsp_obj['photos']['photo'] as $photo) {
 
         $server = $photo['server'];
@@ -66,12 +67,13 @@ class CustomService {
         $secret = $photo['secret'];
         $photo_title = $photo['title'];
 
-        echo "<div><img src=\"https://live.staticflickr.com/{$server}/{$id}_{$secret}_w.jpg\">Title is $photo_title!</div>";
+        $gallery[] = "https://live.staticflickr.com/{$server}/{$id}_{$secret}_w.jpg";
       }
+      return $gallery;
+
     } else {
       echo "Call failed!";
     }
-    die;
   }
 
   /**

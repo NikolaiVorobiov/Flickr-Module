@@ -1,4 +1,4 @@
 services:
   mp_flickr.custom_services:
-    class: Drupal\mp_flickr\CustomService
+    class: Drupal\mp_flickr\CustomServices
 #    arguments: ['@current_user']
