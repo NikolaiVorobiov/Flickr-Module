@@ -22,12 +22,16 @@ class GalleryBlock extends BlockBase {
   public function build() {
     $config = $this->getConfiguration();
 
+    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
+    $gallery_id = $config['gallery_id'];
+    $gallery = \Drupal::service('mp_flickr.custom_services')->getGallery($api_key, $gallery_id);
+
     return [
       [
         '#theme' => 'gallery_form',
-        '#gallery_id' =>  $config['gallery_id'] ?? '' ,
-        '#api_key' =>  $config['api_key'] ?? '',
-        '#gallery' => $config['gallery'] ?? '',
+        '#gallery_id' =>  $gallery_id ?? '' ,
+        '#api_key' =>  $api_key ?? '',
+        '#gallery' => $gallery ?? '',
       ]
     ];
   }
@@ -57,12 +61,6 @@ class GalleryBlock extends BlockBase {
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
 
-    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
-    $gallery_id = $form_state->getValue('gallery_id');
-    $gallery = \Drupal::service('mp_flickr.custom_services')->getGallery($api_key, $gallery_id);
-
     $this->setConfigurationValue('gallery_id', $form_state->getValue('gallery_id'));
-    $this->setConfigurationValue('api_key', $api_key);
-    $this->setConfigurationValue('gallery', $gallery);
   }
 }

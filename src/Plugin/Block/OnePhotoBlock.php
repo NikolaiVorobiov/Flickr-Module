@@ -23,12 +23,16 @@ class OnePhotoBlock extends BlockBase {
   public function build() {
     $config = $this->getConfiguration();
 
+    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
+    $photo_id = $config['photo_id'];
+    $photo = \Drupal::service('mp_flickr.custom_services')->getPhoto($api_key, $photo_id);
+
     return [
       [
         '#theme' => 'photo_form',
-        '#photo_id' =>  $config['photo_id'] ?? '' ,
-        '#api_key' =>  $config['api_key'] ?? '',
-        '#photo' => $config['photo'] ?? '',
+        '#photo_id' =>  $photo_id ?? '' ,
+        '#api_key' =>  $api_key ?? '',
+        '#photo' => $photo ?? '',
       ]
     ];
   }
@@ -58,12 +62,6 @@ class OnePhotoBlock extends BlockBase {
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
 
-    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
-    $photo_id = $form_state->getValue('photo_id');
-    $photo = \Drupal::service('mp_flickr.custom_services')->getPhoto($api_key, $photo_id);
-
     $this->setConfigurationValue('photo_id', $form_state->getValue('photo_id'));
-    $this->setConfigurationValue('api_key', $api_key);
-    $this->setConfigurationValue('photo', $photo);
   }
 }
