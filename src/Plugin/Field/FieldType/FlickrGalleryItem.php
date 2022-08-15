@@ -19,7 +19,8 @@ use Drupal\Core\TypedData\DataDefinition;
  *   label = @Translation("Flickr Gallery id Item"),
  *   description = @Translation("This field stores gallery id."),
  *   default_widget = "gallery_default",
- *   default_formatter = "gallery_default"
+ *   default_formatter = "gallery_default",
+ *   slick_formatter = "gallery_slick"
  * )
  */
 class FlickrGalleryItem extends FieldItemBase {

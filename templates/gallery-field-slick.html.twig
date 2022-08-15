@@ -1,0 +1,15 @@
+<p>Gallery Id: {{ gallery_id }}</p>
+
+{{ attach_library('mp_flickr/slick') }}
+
+<div class="single-item">
+
+  {% for photo in gallery %}
+
+    <div ><img src="{{ photo }}"/></div>
+
+  {% endfor %}
+
+</div>
+
+

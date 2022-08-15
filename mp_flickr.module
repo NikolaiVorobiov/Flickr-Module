@@ -39,5 +39,19 @@ function mp_flickr_theme($existing, $type, $theme, $path) {
       ],
     ],
 
+    'gallery_field_slick' => [
+      'variables' => [
+        'gallery_id' => NULL,
+        'gallery' => NULL,
+      ],
+    ],
+
+    'photo_field_slick' => [
+      'variables' => [
+        'photo_id' => NULL,
+        'photo' => NULL,
+      ],
+    ],
+
   ];
 }

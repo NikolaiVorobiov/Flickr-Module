@@ -19,7 +19,8 @@ use Drupal\Core\TypedData\DataDefinition;
  *   label = @Translation("Flickr Photo id Item"),
  *   description = @Translation("This field stores photo id."),
  *   default_widget = "photo_default",
- *   default_formatter = "photo_default"
+ *   default_formatter = "photo_default",
+ *   slick_formatter = "photo_slick"
  * )
  */
 class FlickrPhotoItem extends FieldItemBase {
