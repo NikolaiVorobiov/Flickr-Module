@@ -11,7 +11,7 @@ use Drupal\Core\Session\AccountInterface;
 class CustomServices {
 
   /**
-   * Returns photo's uri.
+   * Returns photo's url.
    */
   public function getPhoto($api_key, $photo_id) {
 
@@ -42,7 +42,7 @@ class CustomServices {
   }
 
   /**
-   * Return array with gallery photos uri.
+   * Return array with gallery photo's urls.
    */
   public  function getGallery($api_key, $gallery_id) {
 

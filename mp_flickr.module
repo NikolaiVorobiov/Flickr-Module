@@ -55,3 +55,10 @@ function mp_flickr_theme($existing, $type, $theme, $path) {
 
   ];
 }
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mp_flickr_page_attachments(&$variables) {
+  $variables['#attached']['library'][] = 'mp_flickr/slick';
+}

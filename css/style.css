@@ -1,0 +1,11 @@
+.single-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

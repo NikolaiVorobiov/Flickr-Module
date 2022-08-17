@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\mp_flickr\Plugin\field\formatter\FlickrGalleryDefaultFormatter.
+ * Contains \Drupal\mp_flickr\Plugin\field\formatter\FlickrGallerySlickFormatter.
  */
 
 namespace Drupal\mp_flickr\Plugin\Field\FieldFormatter;

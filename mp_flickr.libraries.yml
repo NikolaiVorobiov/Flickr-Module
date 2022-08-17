@@ -3,6 +3,7 @@ slick:
     theme:
       lib/slick/slick.css: {}
       lib/slick/slick-theme.css: {}
+      css/style.css: {}
   js:
     lib/slick/slick.min.js: {}
     js/script.js: {}

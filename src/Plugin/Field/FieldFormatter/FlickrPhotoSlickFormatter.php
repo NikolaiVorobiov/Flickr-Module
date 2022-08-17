@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\mp_flickr\Plugin\field\formatter\FlickrPhotoDefaultFormatter.
+ * Contains \Drupal\mp_flickr\Plugin\field\formatter\FlickrPhotoSlickFormatter.
  */
 
 namespace Drupal\mp_flickr\Plugin\Field\FieldFormatter;
@@ -28,6 +28,7 @@ class FlickrPhotoSlickFormatter extends FormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
+//    dd($items);
 
     $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
 
@@ -36,7 +37,7 @@ class FlickrPhotoSlickFormatter extends FormatterBase {
       $photo_id = $item->photo_id;
       $photo = \Drupal::service('mp_flickr.custom_services')->getPhoto($api_key, $photo_id);
 
-      // Render output using photo-field theme.
+      // Render output using photo-field-slick theme.
       $source = [
         '#theme' => 'photo_field_slick',
         '#photo_id' => $photo_id,
