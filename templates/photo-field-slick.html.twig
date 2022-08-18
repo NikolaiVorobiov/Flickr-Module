@@ -1,7 +1,17 @@
 <p>Photo Id: {{ photo_id }}</p>
 
-<div class="slider single-item">
+{% if photo == 'Call failed!'%}
 
-   <img src="{{ photo }}"/>
+  <p>Call failed!</p>
 
-</div>
+{% else %}
+
+  <div class="slider single-item">
+
+    <img src="{{ photo }}"/>
+
+  </div>
+
+{% endif %}
+
+

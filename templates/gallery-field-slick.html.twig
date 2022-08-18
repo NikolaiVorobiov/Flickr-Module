@@ -1,13 +1,19 @@
 <p>Gallery Id: {{ gallery_id }}</p>
 
-<div class="slider multiple-items">
+{% if gallery == 'Call failed!'%}
 
-  {% for photo in gallery %}
+  <p>Call failed!</p>
 
-    <div><img src="{{ photo }}"/></div>
+{% else %}
 
-  {% endfor %}
+  <div class="slider multiple-items">
 
-</div>
+    {% for photo in gallery %}
 
+      <div><img src="{{ photo }}"/></div>
 
+    {% endfor %}
+
+  </div>
+
+{% endif %}

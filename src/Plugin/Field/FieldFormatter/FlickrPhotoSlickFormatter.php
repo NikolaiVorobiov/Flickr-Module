@@ -15,7 +15,7 @@ use Drupal\Core\Field\FieldItemListInterface;
  *
  * @FieldFormatter(
  *   id = "photo_slick",
- *   label = @Translation("Photo slick formatter"),
+ *   label = @Translation("Photo Slick formatter"),
  *   field_types = {
  *     "photo_id"
  *   }
@@ -28,7 +28,6 @@ class FlickrPhotoSlickFormatter extends FormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
-//    dd($items);
 
     $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
 

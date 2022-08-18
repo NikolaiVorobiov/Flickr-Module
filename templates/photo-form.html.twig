@@ -1,3 +1,11 @@
 <p>Photo Id: {{ photo_id }}</p>
 
-<p><img src="{{ photo }}"/></p>
+{% if photo == 'Call failed!'%}
+
+  <p>Call failed!</p>
+
+{% else %}
+
+  <p><img src="{{ photo }}"/></p>
+
+{% endif %}

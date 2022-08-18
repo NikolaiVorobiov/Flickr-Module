@@ -1,5 +1,19 @@
 <p>Gallery Id: {{ gallery_id }}</p>
 
-{% for photo in gallery %}
-  <p><img src="{{ photo }}"/></p>
-{% endfor %}
+{% if gallery == 'Call failed!'%}
+
+  <p>Call failed!</p>
+
+{% else %}
+
+  {% for photo in gallery %}
+
+    <p><img src="{{ photo }}"/></p>
+
+  {% endfor %}
+
+{% endif %}
+
+
+
+

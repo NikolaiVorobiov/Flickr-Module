@@ -50,10 +50,7 @@ class OnePhotoBlock extends BlockBase {
       '#description' => $this->t('Description: Insert photo_id'),
       '#required' => true,
     ];
-    $form['actions']['submit'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Send form'),
-    ];
+
     return $form;
   }
 

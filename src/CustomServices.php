@@ -72,7 +72,7 @@ class CustomServices {
       return $gallery;
 
     } else {
-      echo "Call failed!";
+      return "Call failed!";
     }
   }
 
