@@ -26,9 +26,17 @@ class GalleryBlock extends BlockBase {
     $gallery_id = $config['gallery_id'];
     $gallery = \Drupal::service('mp_flickr.custom_services')->getGallery($api_key, $gallery_id);
 
+    $slick_check = $config['slick_check'];
+
+    if ( $slick_check ) {
+      $theme = 'gallery_slick';
+    } else {
+      $theme = 'gallery';
+    }
+
     return [
       [
-        '#theme' => 'gallery_form',
+        '#theme' => $theme,
         '#gallery_id' =>  $gallery_id ?? '' ,
         '#api_key' =>  $api_key ?? '',
         '#gallery' => $gallery ?? '',
@@ -50,6 +58,13 @@ class GalleryBlock extends BlockBase {
       '#required' => true,
     ];
 
+    $form['slick_check'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use slick display '),
+      '#default_value' => $config['slick_check'] ?? '',
+      '#description' => $this->t('Description: Сheck this box for slick display'),
+    ];
+
     return $form;
   }
 
@@ -59,5 +74,6 @@ class GalleryBlock extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
 
     $this->setConfigurationValue('gallery_id', $form_state->getValue('gallery_id'));
+    $this->setConfigurationValue('slick_check', $form_state->getValue('slick_check'));
   }
 }

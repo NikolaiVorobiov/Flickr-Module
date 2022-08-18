@@ -38,7 +38,7 @@ class FlickrPhotoSlickFormatter extends FormatterBase {
 
       // Render output using photo-field-slick theme.
       $source = [
-        '#theme' => 'photo_field_slick',
+        '#theme' => 'photo_slick',
         '#photo_id' => $photo_id,
         '#photo' => $photo,
       ];

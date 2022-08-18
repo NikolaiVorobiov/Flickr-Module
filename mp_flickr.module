@@ -11,42 +11,28 @@
 function mp_flickr_theme($existing, $type, $theme, $path) {
   return [
 
-    'photo_form' => [
+    'photo' => [
       'variables' => [
         'photo_id' => NULL,
         'photo' => NULL,
       ],
     ],
 
-    'gallery_form' => [
+    'gallery' => [
       'variables' => [
         'gallery_id' => NULL,
         'gallery' => NULL,
       ],
     ],
 
-    'photo_field' => [
-      'variables' => [
-        'photo_id' => NULL,
-        'photo' => NULL,
-      ],
-    ],
-
-    'gallery_field' => [
+    'gallery_slick' => [
       'variables' => [
         'gallery_id' => NULL,
         'gallery' => NULL,
       ],
     ],
 
-    'gallery_field_slick' => [
-      'variables' => [
-        'gallery_id' => NULL,
-        'gallery' => NULL,
-      ],
-    ],
-
-    'photo_field_slick' => [
+    'photo_slick' => [
       'variables' => [
         'photo_id' => NULL,
         'photo' => NULL,

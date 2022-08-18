@@ -38,7 +38,7 @@ class FlickrGallerySlickFormatter extends FormatterBase {
 
       // Render output using gallery-field-slick theme.
       $source = [
-        '#theme' => 'gallery_field_slick',
+        '#theme' => 'gallery_slick',
         '#gallery_id' => $gallery_id,
         '#gallery' => $gallery,
       ];

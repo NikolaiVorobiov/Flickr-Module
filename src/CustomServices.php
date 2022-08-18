@@ -37,7 +37,7 @@ class CustomServices {
       return $photo;
 
     } else {
-      return "Call failed!";
+      return false;
     }
   }
 
@@ -72,7 +72,7 @@ class CustomServices {
       return $gallery;
 
     } else {
-      return "Call failed!";
+      return false;
     }
   }
 

@@ -27,9 +27,17 @@ class OnePhotoBlock extends BlockBase {
     $photo_id = $config['photo_id'];
     $photo = \Drupal::service('mp_flickr.custom_services')->getPhoto($api_key, $photo_id);
 
+    $slick_check = $config['slick_check'];
+
+    if ( $slick_check ) {
+      $theme = 'photo_slick';
+    } else {
+      $theme = 'photo';
+    }
+
     return [
       [
-        '#theme' => 'photo_form',
+        '#theme' => $theme,
         '#photo_id' =>  $photo_id ?? '' ,
         '#api_key' =>  $api_key ?? '',
         '#photo' => $photo ?? '',
@@ -51,6 +59,13 @@ class OnePhotoBlock extends BlockBase {
       '#required' => true,
     ];
 
+    $form['slick_check'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use slick display '),
+      '#default_value' => $config['slick_check'] ?? '',
+      '#description' => $this->t('Description: Сheck this box for slick display'),
+    ];
+
     return $form;
   }
 
@@ -60,5 +75,6 @@ class OnePhotoBlock extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
 
     $this->setConfigurationValue('photo_id', $form_state->getValue('photo_id'));
+    $this->setConfigurationValue('slick_check', $form_state->getValue('slick_check'));
   }
 }

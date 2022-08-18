@@ -38,7 +38,7 @@ class FlickrGalleryDefaultFormatter extends FormatterBase {
 
       // Render output using gallery-field theme.
       $source = [
-        '#theme' => 'gallery_field',
+        '#theme' => 'gallery',
         '#gallery_id' => $gallery_id,
         '#gallery' => $gallery,
       ];

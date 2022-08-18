@@ -38,7 +38,7 @@ class FlickrPhotoDefaultFormatter extends FormatterBase {
 
       // Render output using photo-field theme.
       $source = [
-        '#theme' => 'photo_field',
+        '#theme' => 'photo',
         '#photo_id' => $photo_id,
         '#photo' => $photo,
       ];
