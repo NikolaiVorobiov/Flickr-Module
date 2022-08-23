@@ -7,7 +7,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\mp_flickr\CustomServices;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use \Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
@@ -29,12 +28,15 @@ class GalleryBlock extends BlockBase implements ContainerFactoryPluginInterface 
   protected $customServices;
 
   /**
-   * The Config Factory.
+   * Config Factory Service Object.
    *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
+  /**
+   * Constructs a GalleryBlock object.
+   */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, CustomServices $customServices, ConfigFactoryInterface $configFactory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
