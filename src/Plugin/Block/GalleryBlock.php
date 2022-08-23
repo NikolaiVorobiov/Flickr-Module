@@ -4,6 +4,11 @@ namespace Drupal\mp_flickr\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\mp_flickr\CustomServices;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use \Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Provides a 'Gallery' block.
@@ -14,7 +19,42 @@ use Drupal\Core\Form\FormStateInterface;
  *   category = @Translation("MP Flickr Blocks"),
  * )
  */
-class GalleryBlock extends BlockBase {
+class GalleryBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * The Custom Services.
+   *
+   * @var \Drupal\mp_flickr\CustomServices
+   */
+  protected $customServices;
+
+  /**
+   * The Config Factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CustomServices $customServices, ConfigFactoryInterface $configFactory) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+
+    $this->customServices = $customServices;
+    $this->configFactory = $configFactory;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('mp_flickr.custom_services'),
+      $container->get('config.factory')
+    );
+  }
+
 
   /**
    * {@inheritdoc}
@@ -22,9 +62,9 @@ class GalleryBlock extends BlockBase {
   public function build() {
     $config = $this->getConfiguration();
 
-    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
+    $api_key = $this->configFactory->get('mp_flickr.adminsettings')->get('api_key');
     $gallery_id = $config['gallery_id'];
-    $gallery = \Drupal::service('mp_flickr.custom_services')->getGallery($api_key, $gallery_id);
+    $gallery = $this->customServices->getGallery($api_key, $gallery_id);
 
     $slick_check = $config['slick_check'];
 

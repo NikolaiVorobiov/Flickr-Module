@@ -4,6 +4,11 @@ namespace Drupal\mp_flickr\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\mp_flickr\CustomServices;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use \Drupal\Core\Config\ConfigFactoryInterface;
 
 
 /**
@@ -15,9 +20,41 @@ use Drupal\Core\Form\FormStateInterface;
  *   category = @Translation("MP Flickr Blocks"),
  * )
  */
-class OnePhotoBlock extends BlockBase {
+class OnePhotoBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
+  /**
+   * The Custom Services.
+   *
+   * @var \Drupal\mp_flickr\CustomServices
+   */
+  protected $customServices;
 
+  /**
+   * The Config Factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CustomServices $customServices, ConfigFactoryInterface $configFactory) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+
+    $this->customServices = $customServices;
+    $this->configFactory = $configFactory;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('mp_flickr.custom_services'),
+      $container->get('config.factory')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -25,9 +62,9 @@ class OnePhotoBlock extends BlockBase {
   public function build() {
     $config = $this->getConfiguration();
 
-    $api_key = \Drupal::configFactory()->get('mp_flickr.adminsettings')->get('api_key');
+    $api_key = $this->configFactory->get('mp_flickr.adminsettings')->get('api_key');
     $photo_id = $config['photo_id'];
-    $photo = \Drupal::service('mp_flickr.custom_services')->getPhoto($api_key, $photo_id);
+    $photo = $this->customServices->getPhoto($api_key, $photo_id);
 
     $slick_check = $config['slick_check'];
 
