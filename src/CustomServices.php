@@ -96,23 +96,4 @@ class CustomServices {
     return $rsp_obj;
   }
 
-
-//  protected $currentUser;
-//
-//  /**
-//   * CustomService constructor.
-//   * @param AccountInterface $currentUser
-//   */
-//  public function __construct(AccountInterface $currentUser) {
-//    $this->currentUser = $currentUser;
-//  }
-//
-//
-//  /**
-//   * @return \Drupal\Component\Render\MarkupInterface|string
-//   */
-//  public function getData() {
-//    return $this->currentUser->getDisplayName();
-//  }
-
 }

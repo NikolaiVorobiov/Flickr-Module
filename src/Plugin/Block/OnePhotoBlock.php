@@ -17,6 +17,8 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class OnePhotoBlock extends BlockBase {
 
+
+
   /**
    * {@inheritdoc}
    */
@@ -61,7 +63,7 @@ class OnePhotoBlock extends BlockBase {
 
     $form['slick_check'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Use slick display '),
+      '#title' => $this->t('Use Slick display '),
       '#default_value' => $config['slick_check'] ?? '',
       '#description' => $this->t('Description: Сheck this box for slick display'),
     ];
